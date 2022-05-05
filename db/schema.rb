@@ -11,12 +11,15 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_05_04_024909) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "shows", force: :cascade do |t|
     t.string "name"
     t.datetime "start_at"
     t.datetime "end_at"
     t.decimal "rate", precision: 8, scale: 2
-    t.integer "venue_id", null: false
+    t.bigint "venue_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["venue_id"], name: "index_shows_on_venue_id"
